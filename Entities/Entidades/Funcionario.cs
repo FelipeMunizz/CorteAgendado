@@ -18,6 +18,4 @@ public class Funcionario : Base
     public int BarbeariaId { get; set; }
     [JsonIgnore]
     public Barbearia Barbearia { get; set; }
-    public virtual ICollection<Agendamento> Agendamentos { get; set; } = new HashSet<Agendamento>();
-
 }

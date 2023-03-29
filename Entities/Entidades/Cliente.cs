@@ -15,7 +15,6 @@ public class Cliente : Base
     public UF UF { get; set; }
     public string Cidade { get; set; }
     public string CEP { get; set; }
-    public virtual ICollection<Agendamento> Agendamentos { get; set; } = new HashSet<Agendamento>();
     [JsonIgnore]
     public virtual Barbearia Barbearia { get; set; }
 }

@@ -21,6 +21,4 @@ public class Barbearia : Base
     public int ConfiguracaoId { get; set; }
     [JsonIgnore]
     public Configuracao Configuracao { get; set; }
-    public virtual ICollection<Funcionario> Funcionarios { get; set; } = new HashSet<Funcionario>();
-    public virtual ICollection<Cliente> Clientes { get; set; } = new HashSet<Cliente>();
 }
