@@ -6,15 +6,10 @@ namespace Entities.Entidades;
 public class Cliente : Base
 {
     public int BarbeariaId { get; set; }
-    public string Sobrenome { get; set; }
-    public string Telefone { get; set; }
-    public string Email { get; set; }
-    public string Logradouro { get; set; }
-    public string Numero { get; set; }
-    public string Complemento { get; set; }
-    public UF UF { get; set; }
-    public string Cidade { get; set; }
-    public string CEP { get; set; }
-    [JsonIgnore]
+    public string Sobrenome { get; set; }    
+    public int EnderecoId { get; set; }
+    public int ContatoId { get; set; }
+    public virtual Contato Contato { get; set; }
+    public virtual Endereco Endereco { get; set; }
     public virtual Barbearia Barbearia { get; set; }
 }

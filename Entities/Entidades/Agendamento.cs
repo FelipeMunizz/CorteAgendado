@@ -13,12 +13,10 @@ public class Agendamento
     public int ClienteId { get; set; }
     public int FuncionarioId { get; set; }
     public int ServicoId { get; set; }
+    public int BarbeariaId { get; set; }
     public DateTime DataHoraAgendamento { get; set; }
-
-    [JsonIgnore]
     public virtual Cliente Cliente { get; set; }
-    [JsonIgnore]
     public virtual Funcionario Funcionario { get; set; }
-    [JsonIgnore]
     public virtual Servico Servico { get; set; }
+    public virtual Barbearia Barbearia { get; set; }
 }

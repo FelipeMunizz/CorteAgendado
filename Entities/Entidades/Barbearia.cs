@@ -10,15 +10,10 @@ namespace Entities.Entidades;
 
 public class Barbearia : Base
 {
-    public string Telefone { get; set; }
-    public string Email { get; set; }
-    public string Logradouro { get; set; }
-    public string Numero { get; set; }
-    public string Complemento { get; set; }
-    public UF UF { get; set; }
-    public string Cidade { get; set; }
-    public string CEP { get; set; }
+    public int ContatoId { get; set; }
+    public int EnderecoId { get; set; }
     public int ConfiguracaoId { get; set; }
-    [JsonIgnore]
-    public Configuracao Configuracao { get; set; }
+    public virtual Contato Contato { get; set; }
+    public virtual Endereco Endereco { get; set; }
+    public virtual Configuracao Configuracao { get; set; }
 }

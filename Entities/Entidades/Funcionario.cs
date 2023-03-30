@@ -7,15 +7,10 @@ public class Funcionario : Base
 {
     public string Sobrenome { get; set; }
     public string Telefone { get; set; }
-    public string Email { get; set; }
-    public string Logradouro { get; set; }
-    public string Numero { get; set; }
-    public string Complemento { get; set; }
-    public UF UF { get; set; }
-    public string Cidade { get; set; }
-    public string CEP { get; set; }
-    public string Cargo { get; set; }
+    public int EnderecoId { get; set; }
+    public int ContatoId { get; set; }
     public int BarbeariaId { get; set; }
-    [JsonIgnore]
+    public virtual Contato Contato { get; set; }
+    public virtual Endereco Endereco { get; set; }
     public Barbearia Barbearia { get; set; }
 }
