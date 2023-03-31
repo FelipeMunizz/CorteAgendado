@@ -1,5 +1,9 @@
-﻿namespace Infra.Repositorio;
+﻿using Domain.Interfaces;
+using Entities.Entidades;
+using Infra.Repositorio.Generics;
 
-public class BarbeariaRepository
+namespace Infra.Repositorio;
+
+public class BarbeariaRepository : RepositorioGenerico<Barbearia>, IBarbearia
 {
 }
