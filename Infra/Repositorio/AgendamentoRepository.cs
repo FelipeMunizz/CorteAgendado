@@ -18,7 +18,7 @@ public class AgendamentoRepository : RepositorioGenerico<Agendamento>, IAgendame
     {
         using (var banco = new AppDbContext(_context))
         {
-            return null;
+            return await banco.Agendamentos.Include(c => c.Cliente).Include(s => s.Servico).Include(f => f.Funcionario).Include(s => s.Servico).AsNoTracking().ToListAsync();
         }
     }
 
