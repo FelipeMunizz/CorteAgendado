@@ -21,17 +21,3 @@ public class Agendamento
     public virtual Servico Servico { get; set; }
     public virtual Barbearia Barbearia { get; set; }
 }
-
-public class RetornoAgendamento
-{
-    public int Id { get; set; }
-    public string NomeCompleto { get; set; }
-    public string Endereco { get; set; }
-    public string Cidade { get; set; }
-    public UF UF { get; set; }
-    public string Telefone { get; set; }
-    public string Email { get; set; }
-    public string Funcionario { get; set; }
-    public string Servico { get; set; }
-    public string DiaHorario 
-}
