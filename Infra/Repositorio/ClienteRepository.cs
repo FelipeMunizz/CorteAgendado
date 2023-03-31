@@ -6,8 +6,4 @@ namespace Infra.Repositorio;
 
 public class ClienteRepository : RepositorioGenerico<Cliente>, ICliente
 {
-    public Task<IList<Cliente>> ListaClientesBarbearia(int idBarbearia)
-    {
-        throw new NotImplementedException();
-    }
 }

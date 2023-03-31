@@ -6,4 +6,13 @@ namespace Infra.Repositorio;
 
 public class BarbeariaRepository : RepositorioGenerico<Barbearia>, IBarbearia
 {
+    public Task<IList<Barbearia>> ListaClientesBarbearia(int idBarbearia)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IList<Funcionario>> ListarFuncionariosBarbearia(int idBarbearia)
+    {
+        throw new NotImplementedException();
+    }
 }

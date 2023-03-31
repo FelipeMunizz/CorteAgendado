@@ -6,8 +6,4 @@ namespace Infra.Repositorio;
 
 public class FuncionarioRepository : RepositorioGenerico<Funcionario>, IFuncionario
 {
-    public Task<IList<Funcionario>> ListarFuncionariosBarbearia(int idBarbearia)
-    {
-        throw new NotImplementedException();
-    }
 }
