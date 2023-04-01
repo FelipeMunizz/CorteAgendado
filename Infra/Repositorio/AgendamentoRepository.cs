@@ -14,6 +14,7 @@ public class AgendamentoRepository : RepositorioGenerico<Agendamento>, IAgendame
     {
         _context = new DbContextOptions<AppDbContext>();
     }
+
     public async Task<IList<Agendamento>> ListarAgendamentosCliente(string emailCliente)
     {
         using (var banco = new AppDbContext(_context))

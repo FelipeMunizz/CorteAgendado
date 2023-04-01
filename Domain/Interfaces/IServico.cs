@@ -6,10 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces
+namespace Domain.Interfaces;
+
+public interface IServico : InterfaceGeneric<Servico>
 {
-    public interface IServico : InterfaceGeneric<Servico>
-    {
-        Task<IList<Servico>> ListarServicosBarbearia(int idBarbearia);
-    }
+
 }

@@ -1,18 +1,25 @@
 ﻿using Domain.Interfaces;
 using Entities.Entidades;
+using Infra.Config;
 using Infra.Repositorio.Generics;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repositorio;
 
 public class BarbeariaRepository : RepositorioGenerico<Barbearia>, IBarbearia
 {
-    public Task<IList<Barbearia>> ListaClientesBarbearia(int idBarbearia)
+    private readonly DbContextOptions<AppDbContext> _context;
+
+    public BarbeariaRepository()
     {
-        throw new NotImplementedException();
+        _context = new DbContextOptions<AppDbContext>();
     }
 
-    public Task<IList<Funcionario>> ListarFuncionariosBarbearia(int idBarbearia)
+    public async Task<Barbearia> ConfiguracaoBarbearia(int idConfiguracao)
     {
-        throw new NotImplementedException();
+        using (var banco = new AppDbContext(_context))
+        {
+            return await banco.Barbearias.Include(c => c.Configuracao).AsNoTracking().FirstOrDefaultAsync();
+        }
     }
 }
