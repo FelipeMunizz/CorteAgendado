@@ -20,10 +20,10 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 #region Repositorios
 builder.Services.AddSingleton<IAgendamento, AgendamentoRepository>();
-builder.Services.AddSingleton<IBarbearia, BarbeariaRepository>();
-builder.Services.AddSingleton<ICliente, ClienteRepository>();
-builder.Services.AddSingleton<IFuncionario,  FuncionarioRepository>();
-builder.Services.AddSingleton<IServico, ServicoRepository>();
+builder.Services.AddSingleton<IBarbearia,   BarbeariaRepository>();
+builder.Services.AddSingleton<ICliente,     ClienteRepository>();
+builder.Services.AddSingleton<IFuncionario, FuncionarioRepository>();
+builder.Services.AddSingleton<IServico,     ServicoRepository>();
 #endregion
 
 var app = builder.Build();
