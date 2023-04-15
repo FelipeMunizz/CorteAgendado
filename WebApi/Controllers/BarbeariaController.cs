@@ -38,7 +38,7 @@ namespace WebApi.Controllers
         {
             await _barbearia.Add(barbearia);
             return new CreatedAtRouteResult("ObterBarbearia",
-                new { id = barbearia.Id }, barbearia);
+                new { id = barbearia.IdBarbearia }, barbearia);
         }
     }
 }

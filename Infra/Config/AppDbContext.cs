@@ -12,10 +12,10 @@ public class AppDbContext : IdentityDbContext
     #region Entidades
     public DbSet<Agendamento> Agendamentos { get; set; }
     public DbSet<Barbearia> Barbearias { get; set; }
+    public DbSet<Configuracao> Configuracao { get; set; }
     public DbSet<Cliente> Clientes { get; set; }
     public DbSet<Funcionario> Funcionarios { get; set; }
     public DbSet<Servicos> Servicos { get; set; }
-
     #endregion
 
     #region Metodos Override
@@ -27,19 +27,12 @@ public class AppDbContext : IdentityDbContext
             base.OnConfiguring(optionsBuilder);
         }
     }
-
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        builder.Entity<ApplicationUser>().ToTable("AspNetUsers").HasKey(t => t.Id);
-
-        base.OnModelCreating(builder);
-    }
     #endregion
 
     #region Metodos Nativos
     public string GetConnectionString()
     {
-        return "Data Source=DESKTOP-10DDISU;Initial Catalog=CorteAgendado;Integrated Security=True;Pooling=False;Encrypt=False;TrustServerCertificate=False;";
+        return "Data Source=DESKTOP-10DDISU;Initial Catalog=CorteAgendadoDb;Integrated Security=True;Pooling=False;Encrypt=False;TrustServerCertificate=False;";
     }
     #endregion    
 }
