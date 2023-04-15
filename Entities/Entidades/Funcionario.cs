@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Entidades;
 
-public class Funcionario : Base
+public class Funcionario
 {
     public int IdFuncionario { get; set; }
     public TipoDoc TipoDoc { get; set; }

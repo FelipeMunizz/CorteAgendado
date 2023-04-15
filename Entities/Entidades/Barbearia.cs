@@ -2,7 +2,7 @@
 
 namespace Entities.Entidades;
 
-public class Barbearia : Base
+public class Barbearia
 {
     public int IdBarbearia { get; set; }
     [MaxLength(60)]

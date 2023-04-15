@@ -1,7 +1,10 @@
-﻿namespace Entities.Entidades;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class Agendamento : Base
+namespace Entities.Entidades;
+
+public class Agendamento
 {
+    [Key]
     public int IdAgendamento { get; set; }
     public DateTime DataHoraAgendamento { get; set; }
     public int IdServico { get; set; }

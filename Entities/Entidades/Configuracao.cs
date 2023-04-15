@@ -2,7 +2,7 @@
 
 namespace Entities.Entidades;
 
-public class Configuracao : Base
+public class Configuracao
 {
     public int IdConfiguracao { get; set; }
     [MaxLength(10)]

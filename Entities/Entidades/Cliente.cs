@@ -1,6 +1,6 @@
 ﻿namespace Entities.Entidades;
 
-public class Cliente : Base
+public class Cliente
 {
     public int IdCliente { get; set; }
     public int IdPessoa { get; set; }

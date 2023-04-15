@@ -2,7 +2,7 @@
 
 namespace Entities.Entidades;
 
-public class Servicos : Base
+public class Servicos
 {
     public int IdServico { get; set; }
     [MaxLength(70)]
