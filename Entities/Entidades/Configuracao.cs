@@ -1,8 +1,14 @@
-﻿namespace Entities.Entidades;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class Configuracao
+namespace Entities.Entidades;
+
+public class Configuracao : Base
 {
-    public int Id { get; set; }
-    public string HorarioAbertura { get; set; }
-    public string HorarioFechamento { get; set; }
+    public int IdConfiguracao { get; set; }
+    [MaxLength(10)]
+    public string? HoraInicio { get; set; }
+    [MaxLength(10)]
+    public string? HoraFim { get; set; }
+    public int IdBarbearia { get; set; }
+    public virtual Barbearia Barbearia { get; set; }
 }

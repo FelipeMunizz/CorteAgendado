@@ -14,12 +14,4 @@ public class ClienteRepository : RepositorioGenerico<Cliente>, ICliente
     {
         _context = new DbContextOptions<AppDbContext>();
     }
-
-    public async Task<IList<Cliente>> ListaClientesBarbearia(int idBarbearia)
-    {
-        using (var banco = new AppDbContext(_context))
-        {
-            return await banco.Clientes.Where(b => b.BarbeariaId == idBarbearia).AsNoTracking().ToListAsync();
-        }
-    }
 }

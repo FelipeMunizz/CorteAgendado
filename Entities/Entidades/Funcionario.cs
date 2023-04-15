@@ -1,15 +1,14 @@
 ﻿using Entities.Enum;
-using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Entidades;
 
 public class Funcionario : Base
 {
-    public string Sobrenome { get; set; }
-    public int EnderecoId { get; set; }
-    public int ContatoId { get; set; }
-    public int BarbeariaId { get; set; }
-    public virtual Contato Contato { get; set; }
-    public virtual Endereco Endereco { get; set; }
-    public Barbearia Barbearia { get; set; }
+    public int IdFuncionario { get; set; }
+    public TipoDoc TipoDoc { get; set; }
+    [MaxLength(14)]
+    public string? Documento { get; set; }
+    public int IdPessoa { get; set; }
+    public virtual Pessoa Pessoa { get; set; }
 }

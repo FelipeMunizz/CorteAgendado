@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Config;
 
-public class AppDbContext : IdentityDbContext<ApplicationUser>
+public class AppDbContext : IdentityDbContext
 {
     public AppDbContext(DbContextOptions options) : base(options) { }
     public AppDbContext() { }
 
     #region Entidades
     public DbSet<Agendamento> Agendamentos { get; set; }
+    public DbSet<Barbearia> Barbearias { get; set; }
     public DbSet<Cliente> Clientes { get; set; }
     public DbSet<Funcionario> Funcionarios { get; set; }
-    public DbSet<Servico> Servicos { get; set; }
-    public DbSet<Barbearia> Barbearias { get; set; }
-    public DbSet<Configuracao> Configuracao { get; set; }
+    public DbSet<Servicos> Servicos { get; set; }
+
     #endregion
 
     #region Metodos Override

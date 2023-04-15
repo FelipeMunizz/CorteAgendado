@@ -5,5 +5,4 @@ namespace Domain.Interfaces;
 
 public interface IBarbearia : InterfaceGeneric<Barbearia>
 {
-    Task<Barbearia> ConfiguracaoBarbearia(int idConfiguracao);
 }

@@ -16,10 +16,29 @@ namespace WebApi.Controllers
             _barbearia = barbearia;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<Barbearia>>> Get()
+        [HttpGet("Barbearias")]
+        public async Task<ActionResult<List<Barbearia>>> GetAll()
         {
             return await _barbearia.List();
+        }
+
+        [HttpGet("{id:int}", Name = "ObterBarbearia")]
+        public async Task<ActionResult<Barbearia>> Get(int id)
+        {
+            Barbearia barbearia = await _barbearia.GetEntityById(id);
+
+            if(barbearia == null)
+                return NotFound("Barbearia não encontrada");
+
+            return Ok(barbearia);
+        }
+
+        [HttpPost("IncluirBarbearia")]
+        public async Task<IActionResult> Post([FromBody]Barbearia barbearia)
+        {
+            await _barbearia.Add(barbearia);
+            return new CreatedAtRouteResult("ObterBarbearia",
+                new { id = barbearia.Id }, barbearia);
         }
     }
 }

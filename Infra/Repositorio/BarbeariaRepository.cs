@@ -14,12 +14,4 @@ public class BarbeariaRepository : RepositorioGenerico<Barbearia>, IBarbearia
     {
         _context = new DbContextOptions<AppDbContext>();
     }
-
-    public async Task<Barbearia> ConfiguracaoBarbearia(int idConfiguracao)
-    {
-        using (var banco = new AppDbContext(_context))
-        {
-            return await banco.Barbearias.Include(c => c.Configuracao).AsNoTracking().FirstOrDefaultAsync();
-        }
-    }
 }

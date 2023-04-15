@@ -14,12 +14,4 @@ public class FuncionarioRepository : RepositorioGenerico<Funcionario>, IFunciona
     {
         _context = new DbContextOptions<AppDbContext>();
     }
-
-    public async Task<IList<Funcionario>> ListarFuncionariosBarbearia(int idBarbearia)
-    {
-        using(var banco = new AppDbContext(_context))
-        {
-            return await banco.Funcionarios.Where(b => b.BarbeariaId == idBarbearia).AsNoTracking().ToListAsync();
-        }
-    }
 }

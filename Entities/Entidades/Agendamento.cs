@@ -1,23 +1,13 @@
-﻿using Entities.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿namespace Entities.Entidades;
 
-namespace Entities.Entidades;
-
-public class Agendamento
+public class Agendamento : Base
 {
-    public int Id { get; set; }
-    public int ClienteId { get; set; }
-    public int FuncionarioId { get; set; }
-    public int ServicoId { get; set; }
-    public int BarbeariaId { get; set; }
+    public int IdAgendamento { get; set; }
     public DateTime DataHoraAgendamento { get; set; }
-    public virtual Cliente Cliente { get; set; }
+    public int IdServico { get; set; }
+    public int IdFuncionario { get; set; }
+    public int IdCliente { get; set; }
+    public virtual Servicos Servicos { get; set; }
     public virtual Funcionario Funcionario { get; set; }
-    public virtual Servico Servico { get; set; }
-    public virtual Barbearia Barbearia { get; set; }
+    public virtual Cliente Cliente { get; set; }
 }
