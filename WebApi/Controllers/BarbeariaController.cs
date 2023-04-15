@@ -16,7 +16,7 @@ namespace WebApi.Controllers
             _barbearia = barbearia;
         }
 
-        [HttpGet("Barbearias")]
+        [HttpGet]
         public async Task<ActionResult<List<Barbearia>>> GetAll()
         {
             return await _barbearia.List();

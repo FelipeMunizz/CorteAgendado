@@ -1,11 +1,10 @@
 ﻿using Entities.Entidades;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Config;
 
-public class AppDbContext : IdentityDbContext
+public class AppDbContext : IdentityDbContext<ApplicationUser>
 {
     public AppDbContext(DbContextOptions options) : base(options) { }
     public AppDbContext() { }
@@ -31,6 +30,9 @@ public class AppDbContext : IdentityDbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        builder.Entity<ApplicationUser>().ToTable("AspNetUsers").HasKey(t => t.Id);
+        base.OnModelCreating(builder);
+
         builder.Entity<Agendamento>().HasKey(a => a.IdAgendamento);
         builder.Entity<Barbearia>().HasKey(b => b.IdBarbearia);
         builder.Entity<Configuracao>().HasKey(c => c.IdConfiguracao);
@@ -38,21 +40,6 @@ public class AppDbContext : IdentityDbContext
         builder.Entity<Servicos>().HasKey(s => s.IdServico);
         builder.Entity<Cliente>().HasKey(cl => cl.IdCliente);
         builder.Entity<Pessoa>().HasKey(p => p.IdPessoa);
-
-        builder.Entity<IdentityUserLogin<string>>(entity =>
-        {
-            entity.HasKey(e => new { e.LoginProvider, e.ProviderKey });
-        });
-
-        builder.Entity<IdentityUserRole<string>>(entity =>
-        {
-            entity.HasKey(e => new { e.UserId, e.RoleId });
-        });
-
-        builder.Entity<IdentityUserToken<string>>(entity =>
-        {
-            entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
-        });
     }
     #endregion
 
