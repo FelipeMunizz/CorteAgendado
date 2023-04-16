@@ -2,6 +2,6 @@
 
 public enum TipoDoc
 {
-    PJ,
-    CF
+    PJ = 1,
+    CPF = 2
 }

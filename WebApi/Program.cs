@@ -71,7 +71,7 @@ builder.Services.AddAuthentication(
     });
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(dbContext.GetConnectionString()));
+    options.UseSqlServer(dbContext.ConnectionString()));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()

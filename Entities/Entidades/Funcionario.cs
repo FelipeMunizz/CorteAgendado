@@ -11,5 +11,5 @@ public class Funcionario
     public string? Documento { get; set; }
     public Cargos Cargo { get; set; }
     public int IdPessoa { get; set; }
-    public virtual Pessoa Pessoa { get; set; }
+    public virtual Pessoa Pessoa { get; set; } = new Pessoa();
 }

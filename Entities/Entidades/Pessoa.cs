@@ -10,5 +10,5 @@ public class Pessoa
     [MaxLength(90)]
     public string? Sobrenome { get; set; }
     public int IdBarbearia { get; set; }
-    public virtual Barbearia Barbearia { get; set; }
+    public virtual Barbearia Barbearia { get; set; } = new Barbearia();
 }

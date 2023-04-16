@@ -8,6 +8,7 @@ public class ContatoPessoa
     [MaxLength(11)]
     public string? Telefone { get; set; }
     [MaxLength(100)]
+    public string? Email { get; set; }
     public bool IsWhatsApp { get; set; }
     public int IdPessoa { get; set; }
     public virtual Pessoa Pessoa { get; set; }

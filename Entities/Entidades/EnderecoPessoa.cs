@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Entidades;
 
-internal class EnderecoPessoa
+public class EnderecoPessoa
 {
     public int IdEnderecoBarbearia { get; set; }
     [MaxLength(200)]

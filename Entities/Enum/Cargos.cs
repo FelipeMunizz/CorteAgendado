@@ -2,6 +2,6 @@
 
 public enum Cargos
 {
-   Gerencia,
-   Barbeiro
+   Gerencia = 1,
+   Barbeiro = 2
 }

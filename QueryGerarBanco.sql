@@ -68,8 +68,8 @@ CREATE TABLE EnderecoPessoa
 CREATE TABLE ContatoPessoa 
 ( 
  IdContadoPessoa INT IDENTITY(1,1) PRIMARY KEY, 
- Email		varchar(11),  
- Telefone	varchar(100),
+ Email		varchar(100),  
+ Telefone	varchar(11),
  IsWhatsApp bit,    
  IdPessoa INT,  
 ); 

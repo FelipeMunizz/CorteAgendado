@@ -4,5 +4,5 @@ public class Cliente
 {
     public int IdCliente { get; set; }
     public int IdPessoa { get; set; }
-    public virtual Pessoa Pessoa { get; set; }
+    public virtual Pessoa Pessoa { get; set; } = new Pessoa();
 }
