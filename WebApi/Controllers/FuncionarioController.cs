@@ -87,7 +87,8 @@ public class FuncionarioController : ControllerBase
         JObject obj = JObject.Parse(resultJson);
 
         string ufString = (string)obj["uf"];
-        UF uf = (UF)Enum.Parse(typeof(UF), ufString);
+        UF
+            uf = (UF)Enum.Parse(typeof(UF), ufString);
 
         EnderecoFuncioanrio endereco = new EnderecoFuncioanrio
         {
