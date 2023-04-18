@@ -50,5 +50,11 @@ namespace WebApi.Controllers
             return new CreatedAtRouteResult("ObterBarbearia",
                 new { id = barbearia.BarbeariaId }, barbearia);
         }
+
+        [HttpGet("{id:int}", Name = "ListaFuncionariosBarbearia")]
+        public async Task<IActionResult> GetBarbeariaFuncionarios(int id)
+        {
+            return Ok();
+        }
     }
 }

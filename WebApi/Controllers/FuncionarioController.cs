@@ -26,7 +26,7 @@ public class FuncionarioController : ControllerBase
     }
 
     [HttpPost("Registrar")]
-    public async Task<IActionResult> Registrar([FromBody] UsuarioDTO model)
+    public async Task<IActionResult> Registrar([FromBody] FuncionarioDTO model)
     {
         string documento = model.Documento;
         string senha = model.Senha;

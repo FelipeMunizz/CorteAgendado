@@ -8,4 +8,5 @@ public class Barbearia
     public int BarbeariaId { get; set; }
     [MaxLength(60)]
     public string? Nome { get; set; }
+    public ICollection<Funcionario>? Funcionarios { get; set; }
 }

@@ -49,4 +49,9 @@ public class BarbeariaRepository : RepositorioGenerico<Barbearia>, IBarbearia
             return barbearia;
         }
     }
+
+    public Task<Barbearia> GetBarbeariaFuncionarios(int barbeariaId)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -3,7 +3,7 @@ using Entities.Enum;
 
 namespace WebApi.DTOs;
 
-public class UsuarioDTO
+public class FuncionarioDTO
 {
     public string? NomeBarbearia { get; set; }
     public string? Usuario { get; set; }
