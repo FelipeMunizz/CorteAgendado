@@ -9,11 +9,11 @@ namespace Infra.Repositorio;
 
 public class BarbeariaRepository : RepositorioGenerico<Barbearia>, IBarbearia
 {
-    private readonly DbContextOptions<AppDbContext> _context;
+    private readonly AppDbContext _context;
 
-    public BarbeariaRepository()
+    public BarbeariaRepository(AppDbContext context)
     {
-        _context = new DbContextOptions<AppDbContext>();
+        _context = context;
     }
 
     public async Task<Barbearia> GetBarbeariaByNome(string nome)
@@ -48,10 +48,5 @@ public class BarbeariaRepository : RepositorioGenerico<Barbearia>, IBarbearia
 
             return barbearia;
         }
-    }
-
-    public Task<Barbearia> GetBarbeariaFuncionarios(int barbeariaId)
-    {
-        throw new NotImplementedException();
     }
 }

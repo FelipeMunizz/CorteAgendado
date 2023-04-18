@@ -3,6 +3,7 @@ using Entities.Entidades;
 using Entities.Enum;
 using Helpers.Utils;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Linq;
 using WebApi.DTOs;
 
@@ -23,6 +24,25 @@ public class FuncionarioController : ControllerBase
         _contato = contato;
         _endereco = endereco;
         _barbearia = barbearia;
+    }
+
+    [HttpGet("ObterFuncionariosBarbearia")]
+    public async Task<ActionResult<IEnumerable<Funcionario>>> GetFuncionariosBarbearia([FromQuery]int barbeariaId)
+    {
+        var funcionarios = await _funcionario.GetFuncionariosBarbearia(barbeariaId);
+
+        return Ok(funcionarios);
+    }
+
+    [HttpGet("{id:int}", Name = "ObterFuncionario")]
+    public async Task<IActionResult> Get(int id)
+    {
+        var funcionario = await _funcionario.GetEntityById(id);
+
+        if (funcionario == null)
+            return BadRequest("Usuario não encontrado");
+
+        return Ok(funcionario);
     }
 
     [HttpPost("Registrar")]
@@ -102,6 +122,70 @@ public class FuncionarioController : ControllerBase
 
         await _endereco.Add(endereco);
 
-        return Ok("Usuario Registrado com Sucesso");
+        return new CreatedAtRouteResult("ObterFuncionario",
+                new { id = funcionario.FuncionarioId }, funcionario);
+    }
+
+    [HttpPut("Editar")]
+    public async Task<IActionResult> Editar([FromBody] FuncionarioAlterarDTO funcionarioDto)
+    {
+        string senha = funcionarioDto.Senha;
+        if (!Senha.ValidaSenha(senha))
+            return BadRequest("Senha não condiz com as diretrizes");
+
+        senha = Senha.CriptografarSenha(senha);
+
+        Funcionario funcionario = await _funcionario.GetEntityById(funcionarioDto.FuncionarioId);
+        if (funcionario == null)
+            return BadRequest("Funcionario não encontrado");
+
+        ContatoFuncionario contato = await _contato.GetContatByIdFuncionario(funcionario.FuncionarioId);
+
+        contato.Email = funcionarioDto.Email;
+        contato.Telefone = funcionarioDto.Telefone;
+        contato.IsWhatsApp = funcionarioDto.IsWhatsApp;
+
+        await _contato.Update(contato);
+
+        EnderecoFuncioanrio endereco = await _endereco.GetEnderecoByIdFuncionario(funcionario.FuncionarioId);
+
+        string url = $"https://viacep.com.br/ws/{funcionarioDto.CEP}/json/";
+        HttpClient client = new HttpClient();
+        var response = await client.GetAsync(url);
+        var resultJson = await response.Content.ReadAsStringAsync();
+        JObject obj = JObject.Parse(resultJson);
+
+        string ufString = (string)obj["uf"];
+        UF
+            uf = (UF)Enum.Parse(typeof(UF), ufString);
+        
+        endereco.Logradouro = (string)obj["logradouro"];
+        endereco.CEP = (string)obj["cep"];
+        endereco.Cidade = (string)obj["localidade"];
+        endereco.UF = uf;
+        endereco.Numero = funcionarioDto.Numero;
+
+        await _endereco.Update(endereco);        
+
+        funcionario.FuncionarioId = funcionarioDto.FuncionarioId;
+        funcionario.Nome = funcionarioDto.Nome;
+        funcionario.Sobrenome = funcionarioDto.Sobrenome;
+        funcionario.Usuario = funcionarioDto.Usuario;
+        funcionario.Senha = senha;
+
+        await _funcionario.Update(funcionario);
+
+        return Ok("Funcionario editado com sucesso");
+    }
+
+    [HttpDelete("Deletar")]
+    public async Task<IActionResult> Deletar([FromQuery]int funcionarioId)
+    {
+        Funcionario funcionario = await _funcionario.GetEntityById(funcionarioId);
+        if (funcionario == null)
+            return BadRequest("Funcionario não encontrado");
+
+        await _funcionario.Delete(funcionario);
+        return Ok("Funcionario deletado com sucesso");
     }
 }

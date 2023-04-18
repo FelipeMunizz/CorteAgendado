@@ -24,4 +24,11 @@ public class FuncionarioRepository : RepositorioGenerico<Funcionario>, IFunciona
 
         return funcionario;
     }
+
+    public async Task<IEnumerable<Funcionario>> GetFuncionariosBarbearia(int barbeariaId)
+    {
+        return await _context.Set<Funcionario>().Where(b => b.BarbeariaId == barbeariaId)
+                                                .Include(b => b.Barbearia)
+                                                .ToListAsync();
+    }
 }

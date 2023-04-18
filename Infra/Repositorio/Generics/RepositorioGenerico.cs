@@ -28,7 +28,7 @@ public class RepositorioGenerico<T> : InterfaceGeneric<T>, IDisposable where T :
     {
         using (var data = new AppDbContext(_optionsBuilder))
         {
-            data.Set<T>().Remove(Objeto);
+            data.Set<T>().Update(Objeto);
             await data.SaveChangesAsync();
         }
     }

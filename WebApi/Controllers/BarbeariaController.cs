@@ -51,10 +51,6 @@ namespace WebApi.Controllers
                 new { id = barbearia.BarbeariaId }, barbearia);
         }
 
-        [HttpGet("{id:int}", Name = "ListaFuncionariosBarbearia")]
-        public async Task<IActionResult> GetBarbeariaFuncionarios(int id)
-        {
-            return Ok();
-        }
+
     }
 }

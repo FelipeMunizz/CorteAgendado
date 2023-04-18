@@ -75,17 +75,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 #region Repositorios
 builder.Services.AddSingleton<IAgendamento, AgendamentoRepository>();
-builder.Services.AddSingleton<IBarbearia,   BarbeariaRepository>();
+builder.Services.AddScoped<IBarbearia,   BarbeariaRepository>();
 builder.Services.AddSingleton<IConfiguracao, ConfiguracaoRepository>();
 builder.Services.AddSingleton<ICliente,     ClienteRepository>();
 builder.Services.AddScoped<IFuncionario, FuncionarioRepository>();
 builder.Services.AddSingleton<IServico,     ServicoRepository>();
-builder.Services.AddSingleton<IContatoFuncionario, ContatoFuncionarioRepository>();
+builder.Services.AddScoped<IContatoFuncionario, ContatoFuncionarioRepository>();
 builder.Services.AddSingleton<IContatoCliente, ContatoClienteRepository>();
 builder.Services.AddSingleton<IContatoBarbearia, ContatoBarbeariaRepository>();
 builder.Services.AddSingleton<IEnderecoCliente, EnderecoClienteRepository>();
 builder.Services.AddSingleton<IEnderecoBarbearia, EnderecoBarbeariaRepository>();
-builder.Services.AddSingleton<IEnderecoFuncionario, EnderecoFuncionarioRepository>();
+builder.Services.AddScoped<IEnderecoFuncionario, EnderecoFuncionarioRepository>();
 #endregion
 
 var app = builder.Build();
