@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Entities.Entidades;
 
-public class Cliente
+public class Cliente : Login
 {
     public int ClienteId { get; set; }
     [MaxLength(60)]

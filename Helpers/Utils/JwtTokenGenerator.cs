@@ -1,5 +1,4 @@
 ﻿using Entities.Entidades;
-using Entities.Enum;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,36 +10,55 @@ namespace Helpers.Utils;
 public static class JwtTokenGenerator
 {
 
-    public static string GenerateJwtToken()
+    public static string GenerateJwtTokenFuncionario(Funcionario user, ContatoFuncionario contatoFuncionario, IConfiguration config)
     {
-        //var claims = new List<Claim>
-        //{
-        //    new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-        //    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-        //    new Claim(ClaimTypes.NameIdentifier, user.Id)
-        //};
+        var claims = new List<Claim>
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, contatoFuncionario.Email),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(ClaimTypes.NameIdentifier, user.Nome)
+        };
 
-        //if(isCliente)
-        //    claims.Add(new Claim("IdCliente", user.Id));
+        claims.Add(new Claim("FuncionarioId", user.FuncionarioId.ToString()));
 
-        //if (isFuncionario)
-        //{
-        //    claims.Add(new Claim("IdFuncionario", user.Id));
-        //}
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var expiration = DateTime.UtcNow.AddHours(double.Parse(config["TokenConfiguration:ExpireHours"]));
 
-        //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
-        //var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-        //var expiration = DateTime.UtcNow.AddHours(double.Parse(config["TokenConfiguration:ExpireHours"]));
+        var token = new JwtSecurityToken(
+            issuer: config["TokenConfiguration:Issuer"],
+            audience: config["TokenConfiguration:Audience"],
+            claims: claims,
+            expires: expiration,
+            signingCredentials: creds
+            );
 
-        //var token = new JwtSecurityToken(
-        //    issuer: config["TokenConfiguration:Issuer"],
-        //    audience: config["TokenConfiguration:Audience"],
-        //    claims: claims,
-        //    expires: expiration,
-        //    signingCredentials: creds
-        //    );
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
 
-        //return new JwtSecurityTokenHandler().WriteToken(token);
-        return "";
+    public static string GenerateJwtTokenCliente(Cliente user, ContatoCliente contatoCliente, IConfiguration config)
+    {
+        var claims = new List<Claim>
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, contatoCliente.Email),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(ClaimTypes.NameIdentifier, user.Nome)
+        };
+
+        claims.Add(new Claim("ClienteId", user.ClienteId.ToString()));
+
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var expiration = DateTime.UtcNow.AddHours(double.Parse(config["TokenConfiguration:ExpireHours"]));
+
+        var token = new JwtSecurityToken(
+            issuer: config["TokenConfiguration:Issuer"],
+            audience: config["TokenConfiguration:Audience"],
+            claims: claims,
+            expires: expiration,
+            signingCredentials: creds
+            );
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }

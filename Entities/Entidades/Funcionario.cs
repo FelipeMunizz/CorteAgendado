@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Entities.Entidades;
 
-public class Funcionario
+public class Funcionario : Login
 {
     public int FuncionarioId { get; set; }
     [MaxLength(60)]

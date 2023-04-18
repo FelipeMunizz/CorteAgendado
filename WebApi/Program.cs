@@ -78,13 +78,14 @@ builder.Services.AddSingleton<IAgendamento, AgendamentoRepository>();
 builder.Services.AddSingleton<IBarbearia,   BarbeariaRepository>();
 builder.Services.AddSingleton<IConfiguracao, ConfiguracaoRepository>();
 builder.Services.AddSingleton<ICliente,     ClienteRepository>();
-builder.Services.AddSingleton<IFuncionario, FuncionarioRepository>();
+builder.Services.AddScoped<IFuncionario, FuncionarioRepository>();
 builder.Services.AddSingleton<IServico,     ServicoRepository>();
 builder.Services.AddSingleton<IContatoFuncionario, ContatoFuncionarioRepository>();
 builder.Services.AddSingleton<IContatoCliente, ContatoClienteRepository>();
 builder.Services.AddSingleton<IContatoBarbearia, ContatoBarbeariaRepository>();
 builder.Services.AddSingleton<IEnderecoCliente, EnderecoClienteRepository>();
 builder.Services.AddSingleton<IEnderecoBarbearia, EnderecoBarbeariaRepository>();
+builder.Services.AddSingleton<IEnderecoFuncionario, EnderecoFuncionarioRepository>();
 #endregion
 
 var app = builder.Build();

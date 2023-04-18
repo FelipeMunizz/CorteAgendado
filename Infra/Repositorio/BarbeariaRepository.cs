@@ -33,11 +33,12 @@ public class BarbeariaRepository : RepositorioGenerico<Barbearia>, IBarbearia
             if (!reader.HasRows)
             {
                 await connection.CloseAsync();
+                return null;
             }
 
             if (reader.Read())
             {
-                barbearia.BarbeariaId = (int)reader["IdBarbearia"];
+                barbearia.BarbeariaId = (int)reader["BarbeariaId"];
                 barbearia.Nome = (string)reader["Nome"];
 
             }

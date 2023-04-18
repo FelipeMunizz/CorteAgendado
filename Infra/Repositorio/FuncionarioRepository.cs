@@ -2,16 +2,26 @@
 using Entities.Entidades;
 using Infra.Config;
 using Infra.Repositorio.Generics;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repositorio;
 
 public class FuncionarioRepository : RepositorioGenerico<Funcionario>, IFuncionario
 {
-    private readonly DbContextOptions<AppDbContext> _context;
+    private readonly AppDbContext _context;
 
-    public FuncionarioRepository()
+    public FuncionarioRepository(AppDbContext appDbContext)
     {
-        _context = new DbContextOptions<AppDbContext>();
+        _context = appDbContext;
+    }
+
+    public async Task<Funcionario> GetFuncionarioByDocumento(string documento)
+    {
+        Funcionario funcionario = new Funcionario();
+
+        funcionario = await _context.Set<Funcionario>().FirstOrDefaultAsync(d => d.Documento == documento);
+
+        return funcionario;
     }
 }

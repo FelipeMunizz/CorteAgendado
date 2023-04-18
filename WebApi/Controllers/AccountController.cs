@@ -37,11 +37,11 @@ public class AccountController : ControllerBase
         _funcionario = funcionario;
     }
 
-    [HttpPost("Registrar")]
-    public async Task<IActionResult> Registrar([FromBody] UsuarioDTO model)
-    {
+    //[HttpPost("Registrar")]
+    //public async Task<IActionResult> Registrar([FromBody] UsuarioDTO model)
+    //{
         
 
-        return Ok("Usuario Registrado com Sucesso");
-    }
+    //    return Ok("Usuario Registrado com Sucesso");
+    //}
 }
