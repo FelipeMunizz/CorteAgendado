@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Entidades;
 
 public class Barbearia
 {
-    public int IdBarbearia { get; set; }
+    public int BarbeariaId { get; set; }
     [MaxLength(60)]
     public string? Nome { get; set; }
 }

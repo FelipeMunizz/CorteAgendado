@@ -73,10 +73,6 @@ builder.Services.AddAuthentication(
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(dbContext.ConnectionString()));
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
-
 #region Repositorios
 builder.Services.AddSingleton<IAgendamento, AgendamentoRepository>();
 builder.Services.AddSingleton<IBarbearia,   BarbeariaRepository>();
@@ -84,6 +80,11 @@ builder.Services.AddSingleton<IConfiguracao, ConfiguracaoRepository>();
 builder.Services.AddSingleton<ICliente,     ClienteRepository>();
 builder.Services.AddSingleton<IFuncionario, FuncionarioRepository>();
 builder.Services.AddSingleton<IServico,     ServicoRepository>();
+builder.Services.AddSingleton<IContatoFuncionario, ContatoFuncionarioRepository>();
+builder.Services.AddSingleton<IContatoCliente, ContatoClienteRepository>();
+builder.Services.AddSingleton<IContatoBarbearia, ContatoBarbeariaRepository>();
+builder.Services.AddSingleton<IEnderecoCliente, EnderecoClienteRepository>();
+builder.Services.AddSingleton<IEnderecoBarbearia, EnderecoBarbeariaRepository>();
 #endregion
 
 var app = builder.Build();

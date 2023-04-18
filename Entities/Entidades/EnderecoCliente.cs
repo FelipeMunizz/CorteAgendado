@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Entities.Entidades;
 
-public class EnderecoBarbearia
+public class EnderecoCliente
 {
-    public int EnderecoBarbeariaId { get; set; }
+    public int EnderecoClienteId { get; set; }
     [MaxLength(200)]
     public string? Logradouro { get; set; }
     [MaxLength(100)]
@@ -16,7 +16,7 @@ public class EnderecoBarbearia
     public UF UF { get; set; }
     [MaxLength(20)]
     public string? CEP { get; set; }
-    public int BarbeariaId { get; set; }
+    public int ClienteId { get; set; }
     [JsonIgnore]
-    public virtual Barbearia Barbearia { get; set; } 
+    public virtual Cliente Cliente { get; set; }
 }

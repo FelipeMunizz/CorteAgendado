@@ -28,7 +28,17 @@ namespace WebApi.Controllers
             Barbearia barbearia = await _barbearia.GetEntityById(id);
 
             if(barbearia == null)
-                return NotFound("Barbearia não encontrada");
+                return BadRequest("Barbearia não encontrada");
+
+            return Ok(barbearia);
+        }
+
+        [HttpGet("{nome}", Name = "ObterBarbeariaByNome")]
+        public async Task<ActionResult<Barbearia>> GetBarbearia(string nome)
+        {
+            var barbearia = await _barbearia.GetBarbeariaByNome(nome);
+            if (barbearia == null)
+                return BadRequest("Barbearia não encontrada");
 
             return Ok(barbearia);
         }
@@ -38,7 +48,7 @@ namespace WebApi.Controllers
         {
             await _barbearia.Add(barbearia);
             return new CreatedAtRouteResult("ObterBarbearia",
-                new { id = barbearia.IdBarbearia }, barbearia);
+                new { id = barbearia.BarbeariaId }, barbearia);
         }
     }
 }
