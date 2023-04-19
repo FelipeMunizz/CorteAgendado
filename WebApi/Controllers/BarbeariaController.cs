@@ -43,7 +43,7 @@ namespace WebApi.Controllers
             return Ok(barbearia);
         }
 
-        [HttpPost("IncluirBarbearia")]
+        [HttpPost("Cadastrar")]
         public async Task<IActionResult> Post([FromBody]Barbearia barbearia)
         {
             await _barbearia.Add(barbearia);
@@ -51,6 +51,32 @@ namespace WebApi.Controllers
                 new { id = barbearia.BarbeariaId }, barbearia);
         }
 
+        [HttpPut("Alterar")]
+        public async Task<IActionResult> Put([FromBody]Barbearia barbeariaEdit)
+        {
+            var barbearia = await _barbearia.GetEntityById(barbeariaEdit.BarbeariaId);
 
+            if (barbearia == null)
+                return BadRequest("Barbearia não encontrada");
+
+            barbearia.Nome = barbeariaEdit.Nome;
+
+            await _barbearia.Update(barbearia);
+
+            return Ok(barbearia);
+        }
+
+        [HttpDelete("Deletar")]
+        public async Task<IActionResult> Delete([FromQuery]int barbeariaId)
+        {
+            var barbearia = await _barbearia.GetEntityById(barbeariaId);
+
+            if (barbearia == null)
+                return BadRequest("Barbearia não encontrada");
+
+            await _barbearia.Delete(barbearia);
+
+            return Ok("Barbearia Excluida com Sucesso");
+        }
     }
 }

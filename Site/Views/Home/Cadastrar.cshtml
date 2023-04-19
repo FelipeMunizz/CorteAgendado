@@ -1,0 +1,19 @@
+﻿@model Barbearia
+
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["MensagemErro"]
+    </div>
+}
+
+<form asp-asp-controller="Home" asp-action="Cadastrar" method="post">
+    <div class="row">
+        <div class="mb-3 col-lg-6 col-md-6 col-sm-1">
+            <label class="form-label">Nome</label>
+            <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o Nome" required/>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>

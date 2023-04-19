@@ -83,7 +83,6 @@ builder.Services.AddSingleton<IServico,     ServicoRepository>();
 builder.Services.AddScoped<IContatoFuncionario, ContatoFuncionarioRepository>();
 builder.Services.AddSingleton<IContatoCliente, ContatoClienteRepository>();
 builder.Services.AddSingleton<IContatoBarbearia, ContatoBarbeariaRepository>();
-builder.Services.AddSingleton<IEnderecoCliente, EnderecoClienteRepository>();
 builder.Services.AddSingleton<IEnderecoBarbearia, EnderecoBarbeariaRepository>();
 builder.Services.AddScoped<IEnderecoFuncionario, EnderecoFuncionarioRepository>();
 #endregion
