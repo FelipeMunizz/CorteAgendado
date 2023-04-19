@@ -49,4 +49,9 @@ public class BarbeariaRepository : RepositorioGenerico<Barbearia>, IBarbearia
             return barbearia;
         }
     }
+
+    public Task<Barbearia> Login(string nome, string senha)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -21,27 +21,27 @@ namespace WebApi.Controllers;
 public class AccountController : ControllerBase
 {
     private readonly IConfiguration _config;
-    private readonly UserManager<IdentityUser> _userManager;
     private readonly ICliente _cliente;
     private readonly IFuncionario _funcionario;
+    private readonly IBarbearia _barbearia;
 
     public AccountController(IConfiguration config,
-                             UserManager<IdentityUser> userManager,
                              ICliente cliente,
-                             IFuncionario funcionario
+                             IFuncionario funcionario,
+                             IBarbearia barbearia
     )
     {
         _config = config;
-        _userManager = userManager;
         _cliente = cliente;
         _funcionario = funcionario;
+        _barbearia = barbearia;
     }
 
-    //[HttpPost("Registrar")]
-    //public async Task<IActionResult> Registrar([FromBody] UsuarioDTO model)
-    //{
-        
+    [HttpPost("Login")]
+    public async Task<IActionResult> Registrar([FromBody] LoginDTO model)
+    {
 
-    //    return Ok("Usuario Registrado com Sucesso");
-    //}
+
+        return Ok("Usuario Registrado com Sucesso");
+    }
 }

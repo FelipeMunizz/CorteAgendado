@@ -14,4 +14,9 @@ public class ClienteRepository : RepositorioGenerico<Cliente>, ICliente
     {
         _context = new DbContextOptions<AppDbContext>();
     }
+
+    public Task<Barbearia> Login(string nome, string senha)
+    {
+        throw new NotImplementedException();
+    }
 }

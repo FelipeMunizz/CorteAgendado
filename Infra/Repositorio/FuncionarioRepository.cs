@@ -31,4 +31,9 @@ public class FuncionarioRepository : RepositorioGenerico<Funcionario>, IFunciona
                                                 .Include(b => b.Barbearia)
                                                 .ToListAsync();
     }
+
+    public Task<Barbearia> Login(string nome, string senha)
+    {
+        throw new NotImplementedException();
+    }
 }
